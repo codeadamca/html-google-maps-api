@@ -4,8 +4,8 @@ A basic example of using the Google Static Maps API.
 
 ![Google Maps Demo](_readme/screenshot-maps-demo.png)
 
-Current result is available here:  
-https://codeadamca.github.io/html-google-maps/demo.html
+> Current result is available here:  
+> https://codeadamca.github.io/html-google-maps/demo.html
 
 ***
 
