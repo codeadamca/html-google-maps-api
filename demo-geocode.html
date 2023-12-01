@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Geocoding API</title>
+</head>
+<body>
+
+    <h1>Google Geocoding API</h1>
+    
+    <div id="results"></div>
+
+    <script>
+      const GOOGLE_MAPS_API_KEY = "<GOOGLE_MAPS_API>";
+
+      let url =
+        "https://maps.googleapis.com/maps/api/geocode/json?address=Toronto,On&key=" +
+        GOOGLE_MAPS_API_KEY;
+
+      let xhttp = new XMLHttpRequest();
+
+      xhttp.onreadystatechange = function () {
+        console.log(this.readyState);
+        console.log(this.status);
+
+        if (this.readyState == 4 && this.status == 200) {
+          console.log(this.response);
+
+          let address = this.response.results[0].formatted_address;
+          let lng = this.response.results[0].geometry.location.lng;
+          let lat = this.response.results[0].geometry.location.lat;
+
+          console.log(address);
+          console.log(lng);
+          console.log(lat);
+
+          let results = document.getElementById("results");
+          results.innerHTML =
+            "Address: " +
+            address +
+            "<br>" +
+            "Lng: " +
+            lng +
+            "<br>" +
+            "Lat:" +
+            lat;
+        }
+
+        console.log("------------------------");
+      };
+
+      xhttp.responseType = "json";
+      xhttp.open("GET", url, true);
+
+      xhttp.send();
+    </script>
+    
+</body>
+</html>
